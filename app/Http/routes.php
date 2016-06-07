@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Resources
+Route::resource('projects', 'ProjectsController');
+Route::resource('projects.tasks', 'TasksController');
+
+// Set slug based URLs
+Route::bind('tasks', function ($value, $route)
+{
+  return App\Task::whereSlug($value)->first();
+});
+
+Route::bind('projects', function ($value, $route)
+{
+  return App\Project::whereSlug($value)->first();
+});
