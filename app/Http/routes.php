@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::resource('projects', 'ProjectsController');
 Route::resource('projects.tasks', 'TasksController');
 
+// Provide controller methods with object instead of IDs
+Route::model('tasks', 'Task');
+Route::model('projects', 'Project');
+
 // Set slug based URLs
 Route::bind('tasks', function ($value, $route)
 {
